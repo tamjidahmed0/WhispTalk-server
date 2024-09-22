@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Login Alert</title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            min-width: 1000px;
+            overflow: auto;
+            line-height: 2;
+        }
+        .container {
+            margin: 50px auto;
+            width: 70%;
+            padding: 20px 0;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+        }
+        .header a {
+            font-size: 1.4em;
+            color: #00466a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .content p {
+            font-size: 1.1em;
+        }
+        .details {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            float: right;
+            padding: 8px 0;
+            color: #aaa;
+            font-size: 0.8em;
+            line-height: 1;
+            font-weight: 300;
+        }
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="">Chat App</a>
+        </div>
+        <div class="content">
+            <p>Hi, {name}</p>
+            <p>We detected a new login to your account:</p>
+            <div class="details">
+                <p><strong>IP Address:</strong> {ip}</p>
+                <p><strong>Location:</strong> {location}</p>
+                <p><strong>Device:</strong> {device}</p>
+                <!-- <p><strong>Operating System:</strong> {os}</p> -->
+                <p><strong>Browser:</strong> {browser}</p>
+                <p><strong>Time:</strong> {time}</p>
+            </div>
+            <p>If this was you, you can safely ignore this email.</p>
+            <p>If this wasn't you, please to secure your account and change your password immediately.</p>
+            <p style="font-size:0.9em;">Regards,<br />Chat App</p>
+            <hr style="border:none;border-top:1px solid #eee" />
+        </div>
+        <div class="footer">
+            <p>Chat App LTD</p>
+            <p>31/1 Postogola</p>
+            <p>Dhaka - 1204</p>
+        </div>
+    </div>
+</body>
+</html>
