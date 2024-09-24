@@ -7,6 +7,7 @@ import notificationSchema from "../models/notification.js";
 import redisClient from '../redis-client/redisClient.js'
 import moment from "moment";
 
+
 const requestAcceptEvent = async ({io, socket, ONLINE_USERS_KEY }) => {
   socket.on("messageAccept", async (data) => {
     console.log(data, 'request accept')
@@ -87,14 +88,20 @@ const requestAcceptEvent = async ({io, socket, ONLINE_USERS_KEY }) => {
               return _userId;
             }
 
-            const check_online_user = await isUserOnline(data.requestId)
+            const send_to_receiver = await isUserOnline(data.requestId)
             const check_sender_online = await isUserOnline(data.userId)
 
             // const onlineData = await onlineSchema.findOne({ id: data.requestId });
              const profile = await profileSchema.findOne({Id:data.requestId})
-            socket.emit("acceptRefresh", {
-              count: countrequest,
-            });
+             const profile_receiver = await profileSchema.findOne({Id:data.userId})
+             
+             io.to(send_to_receiver).emit('acceptNotification', {
+              msg: notification.text,
+              profile : profile_receiver.profilePic,
+              Id: profile_receiver.Id,
+              
+             }) 
+
 
             const createdAt = moment(transferToConversation.date);
             const now = moment();
@@ -132,7 +139,8 @@ const requestAcceptEvent = async ({io, socket, ONLINE_USERS_KEY }) => {
               name: profile.name,
               text: transferToConversation.text,
               date:getFormattedDate(date),
-              verified:  transferToConversation.isVerified
+              verified:  transferToConversation.isVerified,
+           
             });
  
  

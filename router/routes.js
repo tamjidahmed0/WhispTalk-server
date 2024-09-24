@@ -80,7 +80,7 @@ router.route("/profile/:userId").get(authenticate, controller.profile);
 router.route("/conversation/:userId").get( authenticate, conversation);
 router.route("/search/:userId").get( authenticate, Search);
 router.route("/messagereq/:userId").get(messageReqController);
-router.route("/notification/:userId").get( authenticate, notificationController);
+router.route("/notifications/:userId").get( notificationController);
 router.route("/update/:userId").post( authenticate, updateController);
 router.route("/friendrequest").post(friendReqController);
 router.route("/friendlist/:userId").get(friendlistController);
