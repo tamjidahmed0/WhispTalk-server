@@ -12,7 +12,7 @@ const options = {
 
 //process.env.REDIS_URL
 
-const client = new Redis();
+const client = new Redis(process.env.REDIS_URL);
 
 // Handle Redis client errors
 client.on('error', (err) => {
